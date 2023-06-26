@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ysjdb
-        image: amine
+        image: aminemad13/ysjdb
         ports:
         - name: ysjdb-port
           containerPort: 3306
