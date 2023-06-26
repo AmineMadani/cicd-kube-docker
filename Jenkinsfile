@@ -10,6 +10,7 @@ pipeline {
         registry = "aminemad13/ysjappdocker"
         registryCredential = 'dockerhub'
 
+        SONARSERVER = 'sonarserver'
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "13.40.71.83:8081"
@@ -63,9 +64,9 @@ pipeline {
             }
 
             steps {
-                withSonarQubeEnv('sonarserver') {
-                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
-                   -Dsonar.projectName=vprofile-repo \
+                withSonarQubeEnv("${SONARSERVER}") {
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=amine \
+                   -Dsonar.projectName=amine-repo \
                    -Dsonar.projectVersion=1.0 \
                    -Dsonar.sources=src/ \
                    -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
