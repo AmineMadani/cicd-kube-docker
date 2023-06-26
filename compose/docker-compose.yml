@@ -1,0 +1,36 @@
+version: '3'
+services:
+  ysjnginx:
+    image: visualpath/ysjnginx
+    ports:
+      - "80:80"
+
+  ysjapp:
+    image: imranvisualpath/ysjappfix
+    ports:
+      - "8080:8080"
+
+  ysjcache01:
+    image: memcached
+    ports:
+      - "11211:11211"
+
+  ysjmq01:
+    image: rabbitmq
+    ports:
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  ysjdb:
+    image: imranvisualpath/vprdbfix
+    ports:
+      - "3306:3306"
+    volumes:
+      - ysjdbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=ysjdbpass
+
+volumes:
+  ysjdbdata: {}

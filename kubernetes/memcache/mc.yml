@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ysjmc
+  labels:
+    app: ysjmc
+spec:
+  containers:
+  - name: ysjmc
+    image: memcached
+    ports:
+    - name: ysjmc-port
+      containerPort: 11211
+

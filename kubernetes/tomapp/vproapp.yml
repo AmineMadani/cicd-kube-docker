@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ysjapp
+  labels:
+    app: ysjapp
+spec:
+  containers:
+  - name: ysjapp
+    image: visualpath/ysjmultiapp
+    ports:
+    - name: ysjapp-port
+      containerPort: 8080

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ysjdb
+spec:
+  ports:
+  - port: 3306
+    nodePort: 30003
+    targetPort: ysjdb-port
+    protocol: TCP
+  selector:
+    app: ysjdb
+  type: NodePort

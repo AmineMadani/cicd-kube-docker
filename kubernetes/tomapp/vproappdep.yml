@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ysjapp
+  labels: 
+    app: ysjapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ysjapp
+  template:
+    metadata:
+      labels:
+        app: ysjapp
+    spec:
+      containers:
+      - name: ysjapp
+        image: imranvisualpath/8amtomapp_1
+        ports:
+        - name: ysjapp-port
+          containerPort: 8080

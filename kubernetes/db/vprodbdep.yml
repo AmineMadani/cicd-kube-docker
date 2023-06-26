@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ysjdb
+  labels:
+    app: ysjdb
+spec:
+  selector:
+    matchLabels:
+      app: ysjdb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ysjdb
+    spec:
+      containers:
+      - name: ysjdb
+        image: aminemad13/ysjapp
+        ports:
+        - name: ysjdb-port
+          containerPort: 3306
+        env:
+         - name: MYSQL_ROOT_PASSWORD
+           value: "ysjdbpass"
+
